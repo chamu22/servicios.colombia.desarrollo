@@ -40,22 +40,8 @@ import servicios.motor.servicios.repositorio.ServicioFactory;
 
 public class ModeloRecargaCelularesUruguayFactory implements ServicioFactory {
 
-	// INSERT INTO CON_Config ("clave","valor","descripcion") VALUES
-	// ('icr.tdv10.9003.habilitado','true',NULL);
-	// INSERT INTO CON_Config ("clave","valor","descripcion") VALUES
-	// ('icr.tdv10.9003.urlServidor','http://IP:PUERTO/rest',NULL);
-
 	private List<Map<String, Object>> crearCompanias() {
 		List<Map<String, Object>> valores = new LinkedList<Map<String, Object>>();
-
-//		Map<String, Object> antel = new LinkedHashMap<String, Object>();
-//		antel.put("id", "antel");
-//		antel.put("etiqueta", "Antel");
-//		antel.put("codigoArticulo", "REC CEL ANTEL  ");
-//		antel.put("estrategiaReserva", EstrategiaErrorComunicacion.REVERSA);
-//		antel.put("estrategiaRecarga", EstrategiaErrorComunicacion.OFFLINE);
-//		antel.put("recargaLoteable", false);
-//		valores.add(antel);
 
 		Map<String, Object> claro = new LinkedHashMap<String, Object>();
 		claro.put("id", "claro");
@@ -100,36 +86,6 @@ public class ModeloRecargaCelularesUruguayFactory implements ServicioFactory {
 				"El número debe comenzar con 09");
 		return new Estado("ingresoNumero", solicitarNumero);
 	}
-
-//	private List<Importe> importesAntel() {
-//		List<Importe> listaImportesAntel = new LinkedList<Importe>();
-//		listaImportesAntel.add(new Importe(Moneda.PESOS_URUGUAYOS,
-//				new BigDecimal("10")));
-//		listaImportesAntel.add(new Importe(Moneda.PESOS_URUGUAYOS,
-//				new BigDecimal("25")));
-//		listaImportesAntel.add(new Importe(Moneda.PESOS_URUGUAYOS,
-//				new BigDecimal("50")));
-//		listaImportesAntel.add(new Importe(Moneda.PESOS_URUGUAYOS,
-//				new BigDecimal("100")));
-//		listaImportesAntel.add(new Importe(Moneda.PESOS_URUGUAYOS,
-//				new BigDecimal("200")));
-//		listaImportesAntel.add(new Importe(Moneda.PESOS_URUGUAYOS,
-//				new BigDecimal("300")));
-//		listaImportesAntel.add(new Importe(Moneda.PESOS_URUGUAYOS,
-//				new BigDecimal("500")));
-//		return listaImportesAntel;
-//	}
-
-//	private Estado getEstadoImporteAntel() {
-//		SeleccionarValor<Importe> solicitarImporte = new SeleccionarValor<Importe>();
-//		solicitarImporte.setDefinicionVariableContexto("importe");
-//		solicitarImporte.setMensaje("Importe");
-//		solicitarImporte.setSelectorEtiqueta(new ExpresionBeanShell<String>(
-//				"\"$ \"+ v.valor"));
-//		solicitarImporte.setValores(new ExpresionLiteral<Object>(
-//				importesAntel()));
-//		return new Estado("ingresoImporte", solicitarImporte);
-//	}
 
 	private Estado getEstadoImporteClaro() {
 		SolicitarDinero solicitarImporte = new SolicitarDinero();
@@ -308,11 +264,7 @@ public class ModeloRecargaCelularesUruguayFactory implements ServicioFactory {
 		estadoNumero.add(new Transicion(new ExpresionBeanShell<Boolean>(
 				"c.v(\"servicio\"){\"id\"}.equals(\"claro\")"),
 				estadoImporteClaro));
-//		estadoNumero.add(new Transicion(new ExpresionBeanShell<Boolean>(
-//				"c.v(\"servicio\"){\"id\"}.equals(\"antel\")"),
-//				estadoImporteAntel));
 
-		//estadoImporteAntel.add(new Transicion(estadoMostrarNumeroEnPinpad));
 		estadoImporteMovistar.add(new Transicion(estadoMostrarNumeroEnPinpad));
 		estadoImporteClaro.add(new Transicion(estadoMostrarNumeroEnPinpad));
 
