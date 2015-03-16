@@ -11,6 +11,12 @@
 	<artifactId>servicios</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 
+	<scm>
+		<developerConnection>
+            scm:git:https://github.com/pzamudio/servicios.colombia.certificacion
+        </developerConnection>
+	</scm>
+
 	<dependencyManagement>
 		<dependencies>
 			<dependency>
