@@ -1,0 +1,17 @@
+#if(!$txt.isBlank($config.documentsHeader))
+$txt.wrapAndCenter($config.getDocumentsHeader(), $columns)
+#end
+$txt.wrapAndCenter($config.getNombreEmpresa(), $columns)
+$txt.wrapAndCenter($config.getDireccionEmpresa(), $columns)
+$txt.wrapAndCenter($config.getNombreFantasiaEmpresa(), $columns)
+#set($rut = "RUT: $!config.rutEmpresa")
+$txt.wrapAndCenter($rut, $columns)
+#set($caja = "Caja: "+$txt.leftPad($config.getNumeroCaja(), 2, true))
+#set($reg = "Reg: "+$txt.leftPad($config.getNumeroRegistradora(), 3, true))
+#if($user.firstName)
+#set($userTxt = $txt.rightPad($user.firstName, 14, true)+" :"+$txt.leftPad($user.id, 6, true))
+#else
+#set($userTxt = $txt.rightPad($user.lastName, 14, true)+" :"+$txt.leftPad($user.id, 6, true))
+#end
+$caja $reg $userTxt
+Desc. Caja: $txt.leftPad($config.getDescripcionCaja(), 28, true)

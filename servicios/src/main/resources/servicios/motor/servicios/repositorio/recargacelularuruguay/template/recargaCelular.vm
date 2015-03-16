@@ -1,0 +1,52 @@
+#parse("recargaCelular.header.vm")
+
+Número Auditoría :$numeroAuditoria
+#if($respuestaRecarga.offline)
+RRN              :$numeroOperacionReservaHexa
+#else
+RRN              :$numeroOperacionRecargaHexa
+#if($respuestaRecarga.codigoAutorizacion)
+##El código de autorización no viene siempre.
+##Por ejemplo, cuando hay que ingresar el pin manualmente no viene
+Nro Autorización :$respuestaRecarga.codigoAutorizacion
+#end
+## Fecha            :$txt.formatDate($respuestaRecarga.fechaTransaccion, "dd-MM-yyyy HH:mm:ss")
+## Nro. Referencia  :$respuestaRecarga.numeroReferencia
+#end
+Fecha            :$txt.formatDate($operacionVO.fechaInicio, 'dd/MM/yyyy hh:mm:ss')
+Terminal         :$respuestaReserva.terminal
+Comercio         :$respuestaReserva.comercio
+
+Servicio         :$servicio.etiqueta
+Número           :$numero
+Importe          :$txt.format("%.2f", $importe.valor)
+
+#if($respuestaRecarga.offline)
+****************************************
+ Su recarga ha sido demorada por el
+ proveedor. Recibirá su recarga en
+ breve.
+****************************************
+#else
+#if($servicio.id == 'antel')
+Código Agente    :$respuestaRecarga.codigoAgenteAntel
+Número Trámite   :$respuestaRecarga.numeroTramiteAntel
+#if($respuestaRecarga.pinAntel && !$respuestaRecarga.pinAntel.empty)
+Pin              :$respuestaRecarga.pinAntel
+#if($respuestaRecarga.pinAntel.length() == 9)
+La recarga puede demorar hasta 24 horas.
+Si en 24 horas no obtuvo la recarga por
+favor comuniquese con el (02) 908-8329
+de lunes a viernes de 9 a 19hs.
+#else
+Si no se le acredita el importe ingrese
+el PIN manualmente en su aparato.
+#end
+#end
+#end
+#end
+##Movistar no tiene offline
+#if($respuestaRecarga.montoAcreditadoMovistar && $respuestaRecarga.montoAcreditadoMovistar != $importe.valor)
+Monto Acreditado :$respuestaRecarga.montoAcreditadoMovistar
+#end
+
