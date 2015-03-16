@@ -309,7 +309,7 @@ public class ModeloRecargaCelularesUruguayFactory implements ServicioFactory {
 	public Servicio crear() {
 		Servicio servicio = new Servicio("recargaCelularesUruguay", 9003);
 		servicio.setNombre("Recarga de Celulares");
-		servicio.setVersion("0.0.1");
+		servicio.setVersion("0.0.2");
 		servicio.setCasosUso(Collections.singletonList(getCasoUsoRecarga()));
 		servicio.setDefinicionLotes(Collections
 				.singletonList(getDefinicionLote()));
