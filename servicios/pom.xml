@@ -4,11 +4,11 @@
 	<parent>
 		<groupId>scanntech</groupId>
 		<artifactId>colombia</artifactId>
-		<version>0.0.1-SNAPSHOT</version>
+		<version>0.0.3-SNAPSHOT</version>
 	</parent>
 
 	<groupId>scanntech</groupId>
-	<artifactId>servicios</artifactId>
+	<artifactId>colombia.servicios</artifactId>
 
 	<dependencies>
 		<dependency>
