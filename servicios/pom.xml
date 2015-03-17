@@ -8,7 +8,7 @@
 	</parent>
 
 	<groupId>scanntech</groupId>
-	<artifactId>servicios</artifactId>
+	<artifactId>colombia.servicios</artifactId>
 
 	<dependencies>
 		<dependency>
